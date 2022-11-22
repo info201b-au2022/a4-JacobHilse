@@ -17,7 +17,6 @@ This report intends to point out trends of inequality in our nation's incarcerat
 
 ## Data Summary 
 ```{r, message=FALSE, echo=FALSE}
-c(blackPropStar,blackPropNew,percTotalPop)
 paste("1990 Percent proportion of black indviduals relative to total jail population:", blackPropStar)
 paste("2018 Percent proportion of black indviduals relative to total jail population:", blackPropNew)
 paste("Percent Growth of total jail population between 1990 and 2018:", percTotalPop)
