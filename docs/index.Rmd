@@ -1,45 +1,68 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
-date: '2022-11-01'
+title: "Incarceration Inequality (1970-2018)"
+author: "Jacob Hilse"
+date: '2022-11-21'
 output: html_document
 ---
 
-```{r echo=FALSE, eval=TRUE, message=FALSE}
-source("../source/a4-helpers.R")
+```{r echo=FALSE, eval=TRUE, message=FALSE, include=FALSE}
 source("../source/analysis.R")
 ```
 
 ## Abstract 
-[TODO: Include a short abstract (about 50 words)]
-
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
-
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
-
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
-
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
-```
+This report highlights some of the trends found in our nation's incarceration data. In my report I hope to point out statistics that stand out. Some of these statistics indicate overlapping inequalities and disproportionate figures in our incarceration system.
 
 ## Introduction 
-[TODO]
+This report intends to point out trends of inequality in our nation's incarceration system. In this report I have created data visualizations that represent where some of these inequality factors overlap. Some of the major factors are race and region. Although, overtime the intensity of these trends have evolved in different ways. For example a statistic I pointed out was the proportion of white versus black individuals in the total incarcerated population. Another important factor was region, different regions have different social values and norms. These differences result in a number of minor effects on the grand scale of data. Although, something that data struggles to highlight are the contextual and historical elements that some of these trends may be attributed to. For example the Vera organization explains that more than 80% arrests result from low-level nonviolent offenses related to poverty. The data presented in this report effects us all. We should push for an incarceration system that looks to facilitate change in criminal behavior. Additionally, we should look to approach this issue from a causal perspective. This means attempting to solve the issues that push individuals to partake in criminal behavior. This relates to ideas presented in _Data Feminism_. We can use data to highlight what factors contribute to regions or populations with higher crime rates. In turn, we can more directly attack the elements identified by data.
 
 ## Data Summary 
-[TODO]
+```{r, message=FALSE, echo=FALSE}
+c(blackPropStar,blackPropNew,percTotalPop)
+paste("1990 Percent proportion of black indviduals relative to total jail population:", blackPropStar)
+paste("2018 Percent proportion of black indviduals relative to total jail population:", blackPropNew)
+paste("Percent Growth of total jail population between 1990 and 2018:", percTotalPop)
+```
+These few data points highlight some of the overarching trends in our incarceration program. Between the years 1990 to 2018 our incarceration system has seen a 178% increase in total population. Although, during this period the disproportionate statistic of black individuals in jail has decreased. More specifically in the year 1990, black individuals made up over 40% of the jailed population. In recent years this figure has reduced drastically and as of 2018 is sitting at 33.5%. While this is a positive change, when viewing the geographical distribution of this statistic, it's clear there's a regional bias (Figure shown in section 6).
 
-[TODO ... other sections ... See Canvas for details]
+### Growth of the US Prison Population
 
-_All the very best with your work!_
+```{r, echo=FALSE}
+plot_jail_pop_for_us()
+```
 
+_Figure 1 - Growth of US prison population 1970-2018_
+
+This visualization shows the growth of the US incarceration system between 1970 and 2018. During this time period the total jail population has more than tripled in size. Although, this data begs the question: _Is this just a result of America's growing population?_ I would disagree that there is an untainted correlation between the two. As previously stated, there is an immense amount of contextual information surrounding criminal behavior. This chart simply highlights that despite incarcerating more and more individuals, our country continues to subdue crime. 
+_Key Idea: We must seek out a more effective solution, rather than relying on mass incarceration._
+
+### Growth of the Prison Population by state
+
+```{r, echo=FALSE, message=FALSE}
+plot_jail_pop_by_states(c("WA","CA","AL","AZ","OH","NY","TX","FL"))
+```
+
+_Figure 2 - Growth of the Prison Population in AL, AZ, CA, FL, NY, OH, TX, and WA_
+
+This figure shows the different growth rates of prison population among eight different states. This data is useful because it specifies growth for specific reasons. Although, this can push us to investigate new questions. Begin to ask:
+_Can these different growth rates be simply atttributed to the different populations of each state, or are there other elements at play?_
+_If there are other elements at play, what kind of factors may contribute to different growth rates?_
+
+### Proportion of White and Black individuals relative to total Jail population (1990-2018)
+
+```{r, echo=FALSE}
+plotComparison()
+```
+
+_Figure 3 - Proportion of White versus Black Incarcerated Individuals_
+
+This figure shows a clear opposing trend between the two datapoints. An important point to notice is the peak of the incarcerated Black proportion in the early 90s. Also, notice the peak near 2005 for incarcerated White individuals. _What caused these peaks? Are there specific historical events that can be attributed to these peaks?_ Another trend that is immediately apparent is the nearly mirrored trend of each statistic. _Is this a result of social progression or is the steep change simply reactionary based off of recent events? If so, why are these values continuing to grow apart, can we expect the proportions to meet in the future?_
+
+### US Regions with Higher Proportions of Incarcerated Black Individuals Relative to Total Jail Population
+
+```{r, echo=FALSE}
+printMap()
+```
+
+_Figure 4 - Jails with higher proportion of incarcerated black individuals highlighted by marker size_
+
+This figure shows a clear trend of which jails in the US have a higher proportion of incarcerated black individuals. Regions in the deep south and along the eastern coast exhibit some of the higher values of this statistic. Although, the western half of the US represents a much smaller proportion of this statistic. This blatantly skewed distribution shows that nationwide statistics don't represent issues of inequality. By highlighting the regional inequalities we can more specifically target regions that need the most help. Although, _what factors in particular distinguish these regions? How can we effectively target these factors in a meaningful way? Finally, how can we use contrasting regions to draw out the key contributors to this statistic?_
